@@ -1,12 +1,16 @@
 import { useContext } from 'react'
 import { ThemeContext } from '../util/store'
 
-const Button = ({ variant, children }) => {
+const Button = ({ variant, children, onClick, ...props }) => {
   const themeCtx = useContext(ThemeContext)
 
   return (
     <>
-      <button className={`button button-${variant}`} type="button">
+      <button
+        className={`button ${variant !== '' ? 'button-' + variant : null}`}
+        onClick={onClick}
+        {...props}
+      >
         {children}
       </button>
       <style jsx>{`
@@ -40,6 +44,16 @@ const Button = ({ variant, children }) => {
 
           &--block {
             width: 100%;
+          }
+
+          &:hover,
+          &:active {
+            background-color: $button-primary-hover-background;
+          }
+
+          &:focus {
+            box-shadow: 0 0 0 2px
+              scale-color($button-primary-color, $lightness: -40%);
           }
 
           &-primary {

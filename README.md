@@ -52,6 +52,8 @@ Users should be able to:
 - [Persistent Layout Patterns in Next.js](https://adamwathan.me/2019/10/17/persistent-layout-patterns-in-nextjs/)
 - [Next.js Docs: Layouts](https://nextjs.org/docs/basic-features/layouts)
 - [Set up Light and Dark Theme in React](https://milddev.com/react/set-up-light-and-dark-theme-in-react/)
+- [Pure CSS Custom Checkbox Style](https://moderncss.dev/pure-css-custom-checkbox-style/)
+- [useWindowSize Hook](https://usehooks.com/useWindowSize/)
 
 ## Author
 

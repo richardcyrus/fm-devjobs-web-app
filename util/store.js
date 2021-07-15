@@ -17,6 +17,13 @@ export const ThemeContextProvider = ({ children }) => {
       buttonSecondaryBackgroundColor: 'rgba(89, 100, 224, 0.1)',
       buttonSecondaryHoverColor: 'rgba(89, 100, 224, 0.35)',
       buttonTextColor: 'rgb(89, 100, 224)',
+      searchBarBackgroundColor: 'var(--color-secondary-white)',
+      searchBarPlaceholderColor: 'rgba(25, 32, 45, 0.5)',
+      searchBarLabelColor: 'var(--color-primary-very-dark-blue)',
+      searchBarCheckboxBackground: 'rgba(25, 32, 45, 0.1)',
+      searchBarCheckboxCheckedBackground: 'var(--color-primary-violet)',
+      searchBarBorderColor: 'rgba(110, 128, 152, 0.2)',
+      filterButtonColor: 'rgb(110, 128, 152)',
     },
     dark: {
       type: 'dark',
@@ -28,6 +35,13 @@ export const ThemeContextProvider = ({ children }) => {
       buttonSecondaryBackgroundColor: 'rgba(255, 255, 255, 0.1)',
       buttonSecondaryHoverColor: 'rgba(255, 255, 255, 0.35)',
       buttonTextColor: 'rgb(255, 255, 255)',
+      searchBarBackgroundColor: 'var(--color-primary-very-dark-blue)',
+      searchBarPlaceholderColor: 'rgba(255, 255, 255, 0.5)',
+      searchBarLabelColor: 'var(--color-secondary-white)',
+      searchBarCheckboxBackground: 'rgba(255, 255, 255, 0.1)',
+      searchBarCheckboxCheckedBackground: 'var(--color-primary-violet)',
+      searchBarBorderColor: 'rgba(110, 128, 152, 0.2)',
+      filterButtonColor: 'rgb(255, 255, 255)',
     },
   }
 

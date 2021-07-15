@@ -13,7 +13,7 @@ module.exports = {
     defaultLocale: 'en-US',
   },
   eslint: {
-    dirs: ['pages', 'util', 'layouts', 'components', 'lib'],
+    dirs: ['pages', 'util', 'layouts', 'hooks', 'components', 'lib'],
   },
   async headers() {
     return [

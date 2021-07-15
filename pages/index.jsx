@@ -1,9 +1,12 @@
 import { connectToDatabase } from '../util/mongodb'
+import useWindowSize from '../hooks/useWindowSize'
 
 import { getLayout } from '../layouts/IndexLayout'
+
 import Button from '../components/Button'
 import Card from '../components/Card'
 import SearchBar from '../components/SearchBar'
+import MobileSearchBar from '../components/MobileSearchBar'
 
 export async function getServerSideProps() {
   const { db } = await connectToDatabase()
@@ -23,12 +26,17 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ jobs }) {
+  const windowSize = useWindowSize()
+
   return (
     <>
+      {windowSize.width >= 768 ? <SearchBar /> : <MobileSearchBar />}
       {jobs.map((job) => (
         <Card key={job._id} job={job} />
       ))}
-      <Button variant="primary">Load More</Button>
+      <Button type="button" variant="primary">
+        Load More
+      </Button>
     </>
   )
 }
