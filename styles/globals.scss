@@ -1,16 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+:root {
+  --color-primary-light-violet: #939bf4;
+  --color-primary-midnight: #121721;
+  --color-primary-very-dark-blue: #19202d;
+  --color-primary-violet: #5964e0;
+  --color-secondary-dark-grey: #6e8098;
+  --color-secondary-grey: #9daec2;
+  --color-secondary-light-grey: #f4f6f8;
+  --color-secondary-white: #ffffff;
+  --font-size-body: 1rem;
+  --font-size-h1: 1.25rem;
+  --font-size-h2: 1.25rem;
+  --font-size-h3: 1.25rem;
+  --font-size-h4: 0.875rem;
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+  --line-height-body: 1.625rem;
+  --line-height-h1: 1.5rem;
+  --line-height-h2: 1.5rem;
+  --line-height-h3: 1.5rem;
+  --line-height-h4: 1.125rem;
+}
+
+@media screen and (min-width: 48em) {
+  :root {
+    --font-size-h1: 1.75rem;
+    --font-size-h2: 1.5rem;
+    --line-height-h1: 2.125rem;
+    --line-height-h2: 1.8125rem;
+  }
+}
+
 html,
 body {
+  background-color: var(--color-secondary-light-grey);
+  color: var(--color-secondary-dark-grey);
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
   padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 2px solid currentColor;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.page {
+  background-color: var(--color-secondary-light-grey);
+  max-width: 375px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 48em) {
+    max-width: 768px;
+  }
+
+  @media screen and (min-width: 75em) {
+    max-width: 100%;
+  }
 }
 
-* {
-  box-sizing: border-box;
+h1,
+h2,
+h3,
+h4 {
+  font-weight: var(--font-weight-bold);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-primary-very-dark-blue);
+
+  .dark & {
+    color: var(--color-secondary-white);
+  }
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+}
+
+h4 {
+  color: var(--color-primary-violet);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+}
+
+/* #region Attribution */
+.attribution {
+  font-size: 0.6875rem;
+  margin-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+/* #endregion Attribution */
+
+#main-content {
+  .button {
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 48em) {
+      margin-top: 3.5em;
+    }
+  }
 }

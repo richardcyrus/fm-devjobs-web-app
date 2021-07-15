@@ -8,6 +8,9 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Useful resources](#useful-resources)
 - [Author](#author)
 
 ## Overview
@@ -31,6 +34,24 @@ Users should be able to:
 ### Links
 
 - [Repository](https://github.com/richardcyrus/fm-devjobs-web-app)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Flexbox
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+
+### Useful resources
+
+- [A Modern CSS Reset](https://piccalil.li/blog/a-modern-css-reset/)
+- [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Persistent Layout Patterns in Next.js](https://adamwathan.me/2019/10/17/persistent-layout-patterns-in-nextjs/)
+- [Next.js Docs: Layouts](https://nextjs.org/docs/basic-features/layouts)
+- [Set up Light and Dark Theme in React](https://milddev.com/react/set-up-light-and-dark-theme-in-react/)
 
 ## Author
 
