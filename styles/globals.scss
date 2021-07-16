@@ -121,7 +121,7 @@ h4 {
 /* #endregion Attribution */
 
 #main-content {
-  .button {
+  button[data-button-role='get-more'] {
     margin-top: 2em;
     margin-left: auto;
     margin-right: auto;

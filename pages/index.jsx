@@ -34,7 +34,7 @@ export default function Home({ jobs }) {
       {jobs.map((job) => (
         <Card key={job._id} job={job} />
       ))}
-      <Button type="button" variant="primary">
+      <Button type="button" variant="primary" data-button-role="get-more">
         Load More
       </Button>
     </>
