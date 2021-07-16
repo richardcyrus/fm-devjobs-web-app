@@ -257,6 +257,10 @@ const SearchBar = () => {
             .searchBarCheckboxCheckedBackground};
         }
 
+        .checkbox__input input:hover + .checkbox__control {
+          background-color: rgba(89, 100, 224, 0.25);
+        }
+
         .checkbox__input input:checked + .checkbox__control svg {
           transform: scale(1);
         }
