@@ -42,6 +42,13 @@ body {
   line-height: var(--line-height-body);
 }
 
+@counter-style not-dotted-decimal {
+  system: numeric;
+  symbols: '\30''\31''\32''\33''\34''\35''\36''\37''\38''\39';
+  /* symbols: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9'; */
+  suffix: ' ';
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -105,20 +112,6 @@ h4 {
   font-size: var(--font-size-h4);
   line-height: var(--line-height-h4);
 }
-
-/* #region Attribution */
-.attribution {
-  font-size: 0.6875rem;
-  margin-bottom: 0.5rem;
-  margin-top: 2.5rem;
-  padding-bottom: 1rem;
-  text-align: center;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-/* #endregion Attribution */
 
 #main-content {
   button[data-button-role='get-more'] {

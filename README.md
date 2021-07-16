@@ -41,6 +41,7 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - Flexbox
+- CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
@@ -49,6 +50,7 @@ Users should be able to:
 
 - [A Modern CSS Reset](https://piccalil.li/blog/a-modern-css-reset/)
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [Persistent Layout Patterns in Next.js](https://adamwathan.me/2019/10/17/persistent-layout-patterns-in-nextjs/)
 - [Next.js Docs: Layouts](https://nextjs.org/docs/basic-features/layouts)
 - [Set up Light and Dark Theme in React](https://milddev.com/react/set-up-light-and-dark-theme-in-react/)
