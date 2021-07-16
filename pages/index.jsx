@@ -37,6 +37,15 @@ export default function Home({ jobs }) {
       <Button type="button" variant="primary" data-button-role="get-more">
         Load More
       </Button>
+      <style jsx global>{`
+        #main-content button[data-button-role='get-more'] {
+          margin-bottom: 3.875em;
+
+          @media screen and (min-width: 75em) {
+            margin-bottom: 6.5em;
+          }
+        }
+      `}</style>
     </>
   )
 }
