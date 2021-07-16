@@ -50,7 +50,7 @@ const Card = ({ job }) => {
         }
 
         .card-image {
-          align-item: center;
+          align-items: center;
           background-color: ${job.logoBackground};
           border-radius: 15px;
           display: flex;
