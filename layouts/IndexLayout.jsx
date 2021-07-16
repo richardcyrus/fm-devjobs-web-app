@@ -1,7 +1,6 @@
 import { useContext } from 'react'
-import Head from 'next/head'
 
-import Header from '../components/Header'
+import { getLayout as getBaseLayout } from './BaseLayout'
 import { ThemeContext } from '../util/store'
 
 const IndexLayout = ({ children }) => {
@@ -9,43 +8,7 @@ const IndexLayout = ({ children }) => {
 
   return (
     <>
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Devjobs Web App | Frontend Mentor</title>
-        <meta
-          name="description"
-          content="This is a solution to the Devjobs web app challenge on Frontend Mentor"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css"
-        />
-      </Head>
-      <div className="page">
-        <Header />
-        <main id="main-content">{children}</main>
-        <footer>
-          <div className="attribution">
-            Challenge by{' '}
-            <a
-              href="https://www.frontendmentor.io?ref=challenge"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Frontend Mentor
-            </a>
-            . Coded by <a href="https://www.richardcyrus.com">Richard Cyrus</a>.
-          </div>
-        </footer>
-      </div>
+      <main id="main-content">{children}</main>
       <style jsx global>{`
         html,
         body,
@@ -80,6 +43,7 @@ const IndexLayout = ({ children }) => {
   )
 }
 
-export const getLayout = (page) => <IndexLayout>{page}</IndexLayout>
+export const getLayout = (page) =>
+  getBaseLayout(<IndexLayout>{page}</IndexLayout>)
 
 export default IndexLayout
