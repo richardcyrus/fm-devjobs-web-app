@@ -1,25 +1,41 @@
 import { useContext } from 'react'
 import { ThemeContext } from '../util/store'
 
-const Button = ({ variant, children, onClick, ...props }) => {
+const Button = ({ as, variant, children, onClick, ...props }) => {
   const themeCtx = useContext(ThemeContext)
 
   return (
     <>
-      <button
-        className={`button ${variant !== '' ? 'button-' + variant : null}`}
-        onClick={onClick}
-        {...props}
-      >
-        {children}
-      </button>
+      {as === 'a' ? (
+        <a
+          href={props.href}
+          className={`button ${variant !== '' ? 'button-' + variant : null}`}
+          {...props}
+        >
+          {children}
+        </a>
+      ) : (
+        <button
+          className={`button ${variant !== '' ? 'button-' + variant : null}`}
+          onClick={onClick}
+          {...props}
+        >
+          {children}
+        </button>
+      )}
       <style jsx>{`
         $button-primary-color: rgb(89, 100, 224);
         $button-primary-hover-background: #939bf4;
+        $button-primary-text-color: ${themeCtx.theme.buttonPrimaryTextColor};
+        $button-secondary-text-color: ${themeCtx.theme.buttonTextColor};
         $button-secondary-background-color: ${themeCtx.theme
           .buttonSecondaryBackgroundColor};
         $button-secondary-hover-background: ${themeCtx.theme
           .buttonSecondaryHoverColor};
+
+        a.button {
+          text-decoration: none;
+        }
 
         .button {
           align-items: center;
@@ -58,7 +74,7 @@ const Button = ({ variant, children, onClick, ...props }) => {
 
           &-primary {
             background-color: $button-primary-color;
-            color: var(--color-secondary-white);
+            color: $button-primary-text-color;
 
             &:hover,
             &:active {
@@ -73,7 +89,7 @@ const Button = ({ variant, children, onClick, ...props }) => {
 
           &-secondary {
             background-color: $button-secondary-background-color;
-            color: $button-primary-color;
+            color: $button-secondary-text-color;
 
             &:hover,
             &:active {
