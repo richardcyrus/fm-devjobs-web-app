@@ -98,6 +98,7 @@ const SearchBar = () => {
           @media screen and (min-width: 48em) {
             align-self: center;
             margin-top: 0;
+            margin-left: 1.75em;
             min-width: 5em;
           }
 
@@ -108,7 +109,7 @@ const SearchBar = () => {
       `}</style>
 
       <style jsx>{`
-        @media screen and (max-width: 48em) {
+        @media screen and (max-width: 74.9375em) {
           .only {
             display: none;
           }
@@ -136,7 +137,7 @@ const SearchBar = () => {
           @media screen and (min-width: 48em) {
             align-items: center;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-around safe;
           }
         }
 
