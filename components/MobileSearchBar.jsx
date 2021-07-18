@@ -1,29 +1,30 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
+import { useFormContext } from 'react-hook-form'
 
 import { ThemeContext } from '../util/store'
 
 import Button from './Button'
 import MobileSearchModal from './MobileSearchModal'
 
-const MobileSearchBar = () => {
+const MobileSearchBar = ({
+  onSubmit,
+  handleFilterClick,
+  isFilterModalOpen,
+}) => {
   const themeCtx = useContext(ThemeContext)
-
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
-
-  const handleFilterClick = () => {
-    setIsFilterModalOpen(!isFilterModalOpen)
-  }
+  const { register, handleSubmit } = useFormContext()
 
   return (
     <>
       <div className="mobile-search-bar">
-        <form>
+        <form id="mobile-search" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <input
               type="text"
-              id="titleSearch"
-              name="titleSearch"
+              id="position"
+              name="position"
               placeholder="Filter by title&hellip;"
+              {...register('position')}
             />
           </div>
           <div className="mobile-search-bar-controls">
@@ -66,9 +67,7 @@ const MobileSearchBar = () => {
           </div>
         </form>
       </div>
-      {isFilterModalOpen ? (
-        <MobileSearchModal onFilterClick={handleFilterClick} />
-      ) : null}
+      {isFilterModalOpen ? <MobileSearchModal /> : null}
       <style jsx global>{`
         #main-content {
           button[data-button-role='mobile-filter-open'],
@@ -119,7 +118,7 @@ const MobileSearchBar = () => {
           align-items: center;
         }
 
-        #titleSearch {
+        #position {
           width: 19ch;
         }
 

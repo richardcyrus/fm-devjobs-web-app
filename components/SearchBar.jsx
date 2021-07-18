@@ -1,16 +1,22 @@
 import { useContext } from 'react'
+import { useFormContext } from 'react-hook-form'
 
 import { ThemeContext } from '../util/store'
 
 import Button from './Button'
 
-const SearchBar = () => {
+const SearchBar = ({ onSubmit }) => {
   const themeCtx = useContext(ThemeContext)
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty },
+  } = useFormContext()
 
   return (
     <>
       <div className="search-bar">
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <span className="icon">
               <svg
@@ -28,9 +34,10 @@ const SearchBar = () => {
             </span>
             <input
               type="text"
-              id="titleSearch"
-              name="titleSearch"
+              id="position"
+              name="position"
               placeholder="Filter by title&hellip;"
+              {...register('position')}
             />
           </div>
           <div className="form-control">
@@ -50,21 +57,20 @@ const SearchBar = () => {
             </span>
             <input
               type="text"
-              name="locationSearch"
-              id="locationSearch"
+              name="location"
+              id="location"
               placeholder="Filter by location&hellip;"
+              {...register('location')}
             />
           </div>
           <div className="form-control">
-            <label
-              htmlFor="contractFullTime"
-              className="contract-label checkbox"
-            >
+            <label htmlFor="contract" className="contract-label checkbox">
               <span className="checkbox__input">
                 <input
                   type="checkbox"
-                  name="contractFullTime"
-                  id="contractFullTime"
+                  name="contract"
+                  id="contract"
+                  {...register('contract')}
                 />
                 <span className="checkbox__control">
                   <svg
@@ -88,7 +94,12 @@ const SearchBar = () => {
               </span>
             </label>
           </div>
-          <Button type="submit" variant="primary" data-button-role="search">
+          <Button
+            type="submit"
+            variant="primary"
+            data-button-role="search"
+            disabled={!isDirty}
+          >
             Search
           </Button>
         </form>
@@ -189,7 +200,7 @@ const SearchBar = () => {
           }
         }
 
-        #titleSearch {
+        #position {
           @media screen and (min-width: 48em) {
             width: 14ch;
           }

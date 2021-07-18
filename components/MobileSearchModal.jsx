@@ -1,16 +1,18 @@
 import { useContext } from 'react'
+import { useFormContext } from 'react-hook-form'
 
 import { ThemeContext } from '../util/store'
 
 import Button from './Button'
 
-const MobileSearchModal = ({ onFilterClick }) => {
+const MobileSearchModal = () => {
   const themeCtx = useContext(ThemeContext)
+  const { register } = useFormContext()
 
   return (
     <>
       <div className="modal-overlay">
-        <form onClick={onFilterClick}>
+        <div className="form-container">
           <div className="mobile-modal-content">
             <div className="form-control">
               <span className="icon">
@@ -29,9 +31,11 @@ const MobileSearchModal = ({ onFilterClick }) => {
               </span>
               <input
                 type="text"
-                name="locationSearch"
-                id="locationSearch"
+                name="location"
+                id="location"
                 placeholder="Filter by location&hellip;"
+                form="mobile-search"
+                {...register('location')}
               />
             </div>
             <div className="form-control">
@@ -42,8 +46,10 @@ const MobileSearchModal = ({ onFilterClick }) => {
                 <span className="checkbox__input">
                   <input
                     type="checkbox"
-                    name="contractFullTime"
-                    id="contractFullTime"
+                    name="contract"
+                    id="contract"
+                    {...register('contract')}
+                    form="mobile-search"
                   />
                   <span className="checkbox__control">
                     <svg
@@ -71,11 +77,12 @@ const MobileSearchModal = ({ onFilterClick }) => {
               type="submit"
               variant="primary"
               data-button-role="mobile-modal-search"
+              form="mobile-search"
             >
               Search
             </Button>
           </div>
-        </form>
+        </div>
       </div>
       <style jsx global>{`
         #main-content button[data-button-role='mobile-modal-search'] {
@@ -98,13 +105,13 @@ const MobileSearchModal = ({ onFilterClick }) => {
           z-index: 2;
         }
 
-        form {
+        .form-container {
           background-color: ${themeCtx.theme.searchBarBackgroundColor};
           border-radius: 6px;
           height: 217px;
           left: 24px;
           position: absolute;
-          top: 169px;
+          top: 225px;
           width: 327px;
         }
 

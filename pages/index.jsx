@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import { connectToDatabase } from '../util/mongodb'
 import useWindowSize from '../hooks/useWindowSize'
+import { useForm, FormProvider } from 'react-hook-form'
 
 import { getLayout } from '../layouts/IndexLayout'
 
@@ -27,10 +29,51 @@ export async function getServerSideProps() {
 
 export default function Home({ jobs }) {
   const windowSize = useWindowSize()
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
+
+  const handleFilterClick = () => {
+    setIsFilterModalOpen(!isFilterModalOpen)
+  }
+
+  const methods = useForm()
+  const {
+    reset,
+    formState: { isSubmitSuccessful, submittedData },
+  } = methods
+
+  const onSubmit = (data) => {
+    setIsFilterModalOpen(false)
+    console.log(data)
+  }
+
+  const onKeyDown = (event) => {
+    if (event.keyCode === 27) {
+      setIsFilterModalOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset()
+    }
+  }, [isSubmitSuccessful, submittedData, reset])
 
   return (
     <>
-      {windowSize.width >= 768 ? <SearchBar /> : <MobileSearchBar />}
+      {windowSize.width >= 768 ? (
+        <FormProvider {...methods}>
+          <SearchBar onSubmit={onSubmit} />
+        </FormProvider>
+      ) : (
+        <FormProvider {...methods}>
+          <MobileSearchBar
+            onSubmit={onSubmit}
+            onKeyDown={onKeyDown}
+            handleFilterClick={handleFilterClick}
+            isFilterModalOpen={isFilterModalOpen}
+          />
+        </FormProvider>
+      )}
       {jobs.map((job) => (
         <Card key={job._id} job={job} />
       ))}
