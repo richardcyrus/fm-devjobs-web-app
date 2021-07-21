@@ -70,6 +70,7 @@ const SearchBar = ({ onSubmit }) => {
                   type="checkbox"
                   name="contract"
                   id="contract"
+                  value="Full Time"
                   {...register('contract')}
                 />
                 <span className="checkbox__control">
