@@ -39,10 +39,7 @@ const MobileSearchModal = () => {
               />
             </div>
             <div className="form-control">
-              <label
-                htmlFor="contractFullTime"
-                className="contract-label checkbox"
-              >
+              <label htmlFor="contract" className="contract-label checkbox">
                 <span className="checkbox__input">
                   <input
                     type="checkbox"
@@ -50,6 +47,7 @@ const MobileSearchModal = () => {
                     id="contract"
                     {...register('contract')}
                     form="mobile-search"
+                    value="Full Time"
                   />
                   <span className="checkbox__control">
                     <svg
