@@ -1,35 +1,29 @@
-import { useEffect, useState } from 'react'
-import { connectToDatabase } from '../util/mongodb'
-import useWindowSize from '../hooks/useWindowSize'
+import React, { useEffect, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 
-import { getLayout } from '../layouts/IndexLayout'
+import { useInfiniteJobs } from '../hooks/useJobs'
+import useWindowSize from '../hooks/useWindowSize'
 
+import { getLayout } from '../layouts/IndexLayout'
 import Button from '../components/Button'
 import Card from '../components/Card'
 import SearchBar from '../components/SearchBar'
 import MobileSearchBar from '../components/MobileSearchBar'
 
-export async function getServerSideProps() {
-  const { db } = await connectToDatabase()
-
-  const jobs = await db
-    .collection('jobs')
-    .find({})
-    .sort({ _id: 1 })
-    .limit(12)
-    .toArray()
-
-  return {
-    props: {
-      jobs: JSON.parse(JSON.stringify(jobs)),
-    },
-  }
-}
-
-export default function Home({ jobs }) {
+export default function Home() {
   const windowSize = useWindowSize()
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
+  const [filters, setFilters] = useState({ limit: 12 })
+
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteJobs(filters)
 
   const handleFilterClick = () => {
     setIsFilterModalOpen(!isFilterModalOpen)
@@ -43,13 +37,12 @@ export default function Home({ jobs }) {
 
   const onSubmit = (data) => {
     setIsFilterModalOpen(false)
-    console.log(data)
-  }
 
-  const onKeyDown = (event) => {
-    if (event.keyCode === 27) {
-      setIsFilterModalOpen(false)
+    if (!data.contract) {
+      delete data.contract
     }
+
+    setFilters({ ...filters, ...data })
   }
 
   useEffect(() => {
@@ -68,24 +61,76 @@ export default function Home({ jobs }) {
         <FormProvider {...methods}>
           <MobileSearchBar
             onSubmit={onSubmit}
-            onKeyDown={onKeyDown}
             handleFilterClick={handleFilterClick}
             isFilterModalOpen={isFilterModalOpen}
           />
         </FormProvider>
       )}
-      {jobs.map((job) => (
-        <Card key={job._id} job={job} />
-      ))}
-      <Button type="button" variant="primary" data-button-role="get-more">
-        Load More
-      </Button>
+      {status === 'loading' ? (
+        <div>Loading...</div>
+      ) : status === 'error' ? (
+        <p>{error.message}</p>
+      ) : (
+        <>
+          <div className="job-cards">
+            {data.pages.map((group, i) => (
+              <React.Fragment key={i}>
+                {group.map((nextGroup, j) => (
+                  <React.Fragment key={j}>
+                    {nextGroup.jobs.map((job) => (
+                      <Card key={job._id} job={job} />
+                    ))}
+                  </React.Fragment>
+                ))}
+              </React.Fragment>
+            ))}
+          </div>
+          <Button
+            onClick={() => fetchNextPage()}
+            disabled={!hasNextPage || isFetchingNextPage}
+            type="button"
+            variant="primary"
+            data-button-role="get-more"
+          >
+            {isFetchingNextPage
+              ? 'Loading more...'
+              : hasNextPage
+              ? 'Load More'
+              : 'Load More'}
+          </Button>
+          <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
+        </>
+      )}
       <style jsx global>{`
         #main-content button[data-button-role='get-more'] {
           margin-bottom: 3.875em;
 
           @media screen and (min-width: 75em) {
             margin-bottom: 6.5em;
+          }
+        }
+      `}</style>
+
+      <style jsx>{`
+        .job-cards {
+          display: flex;
+          flex-direction: column;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 327px;
+
+          @media screen and (min-width: 48em) {
+            align-item: center;
+            column-gap: 0.6875em;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 689px;
+          }
+
+          @media screen and (min-width: 75em) {
+            column-gap: 1.875em;
+            max-width: 1110px;
           }
         }
       `}</style>

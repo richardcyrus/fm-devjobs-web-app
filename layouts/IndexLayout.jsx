@@ -26,15 +26,11 @@ const IndexLayout = ({ children }) => {
 
           @media screen and (min-width: 48em) {
             align-item: center;
-            column-gap: 0.6875em;
-            flex-direction: row;
-            flex-wrap: wrap;
             justify-content: center;
             max-width: 689px;
           }
 
           @media screen and (min-width: 75em) {
-            column-gap: 1.875em;
             max-width: 1110px;
           }
         }
