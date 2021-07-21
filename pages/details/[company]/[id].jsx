@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-const Job = ({ job }) => {
+const JobDetail = ({ job }) => {
   const themeCtx = useContext(ThemeContext)
 
   return (
@@ -40,7 +40,7 @@ const Job = ({ job }) => {
           </div>
           <div className="job-detail__company-info">
             <h2 className="job-detail__company-name">{job.company}</h2>
-            <p>{`${job.company.toLowerCase()}.com`}</p>
+            <p>{`${job.company.toLowerCase().replace(/\s+/g, '')}.com`}</p>
           </div>
           <div className="job-detail__company-cta">
             <Button
@@ -377,6 +377,6 @@ const Job = ({ job }) => {
   )
 }
 
-Job.getLayout = getLayout
+JobDetail.getLayout = getLayout
 
-export default Job
+export default JobDetail
