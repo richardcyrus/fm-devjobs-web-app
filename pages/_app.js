@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { ThemeContextProvider } from '../util/store'
+import { ThemeContextProvider } from '../context/ThemeContext'
 import '../styles/globals.scss'
 
 const queryClient = new QueryClient()

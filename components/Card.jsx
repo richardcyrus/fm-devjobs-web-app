@@ -2,7 +2,7 @@
 import { useContext } from 'react'
 
 import Link from 'next/link'
-import { ThemeContext } from '../util/store'
+import { ThemeContext } from '../context/ThemeContext'
 
 const Card = ({ job }) => {
   const themeCtx = useContext(ThemeContext)

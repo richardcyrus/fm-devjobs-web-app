@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { getLayout as getBaseLayout } from './BaseLayout'
-import { ThemeContext } from '../util/store'
+import { ThemeContext } from '../context/ThemeContext'
 
 const JobDetailLayout = ({ children }) => {
   const themeCtx = useContext(ThemeContext)

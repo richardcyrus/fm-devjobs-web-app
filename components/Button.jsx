@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ThemeContext } from '../util/store'
+import { ThemeContext } from '../context/ThemeContext'
 
 const Button = ({ as, variant, children, onClick, ...props }) => {
   const themeCtx = useContext(ThemeContext)

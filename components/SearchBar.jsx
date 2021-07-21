@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { ThemeContext } from '../util/store'
+import { ThemeContext } from '../context/ThemeContext'
 
 import Button from './Button'
 

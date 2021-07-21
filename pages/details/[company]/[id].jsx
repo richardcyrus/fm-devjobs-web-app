@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 import { connectToDatabase } from '../../../util/mongodb'
 
-import { ThemeContext } from '../../../util/store'
+import { ThemeContext } from '../../../context/ThemeContext'
 import { getLayout } from '../../../layouts/JobDetailLayout'
 
 import Button from '../../../components/Button'

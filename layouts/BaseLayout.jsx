@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import Head from 'next/head'
 
 import Header from '../components/Header'
-import { ThemeContext } from '../util/store'
+import { ThemeContext } from '../context/ThemeContext'
 
 const BaseLayout = ({ children }) => {
   const themeCtx = useContext(ThemeContext)
