@@ -34,6 +34,7 @@ Users should be able to:
 ### Links
 
 - [Repository](https://github.com/richardcyrus/fm-devjobs-web-app)
+- [Live Site](https://fm-devjobs-web-app.vercel.app/)
 
 ## My process
 
@@ -45,6 +46,10 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
+- [mongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [Axios](https://axios-http.com/)
+- [React Query](https://react-query.tanstack.com/)
+- [React Hook Form](https://react-hook-form.com/)
 
 ### Useful resources
 
