@@ -116,7 +116,7 @@ export default function Home() {
           max-width: 327px;
 
           @media screen and (min-width: 48em) {
-            align-item: center;
+            align-items: center;
             column-gap: 0.6875em;
             flex-direction: row;
             flex-wrap: wrap;

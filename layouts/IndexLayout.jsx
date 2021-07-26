@@ -25,7 +25,7 @@ const IndexLayout = ({ children }) => {
           max-width: 327px;
 
           @media screen and (min-width: 48em) {
-            align-item: center;
+            align-items: center;
             justify-content: center;
             max-width: 689px;
           }

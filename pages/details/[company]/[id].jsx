@@ -159,7 +159,7 @@ const JobDetail = ({ job }) => {
           width: 327px;
 
           @media screen and (min-width: 48em) {
-            align-item: center;
+            align-items: center;
             justify-content: center;
             width: 689px;
           }
