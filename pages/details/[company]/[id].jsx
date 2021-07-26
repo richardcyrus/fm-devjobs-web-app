@@ -8,7 +8,27 @@ import { getLayout } from '../../../layouts/JobDetailLayout'
 
 import Button from '../../../components/Button'
 
-export async function getServerSideProps(context) {
+export const getStaticPaths = async () => {
+  const fields = {
+    _id: 1,
+    company: 1,
+  }
+
+  const { db } = await connectToDatabase()
+
+  const jobs = await db.collection('jobs').find({}).project(fields).toArray()
+
+  const paths = jobs.map((job) => ({
+    params: {
+      company: job.company.toLowerCase().replace(/\s+/g, ''),
+      id: job._id.toString(),
+    },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps(context) {
   const { db } = await connectToDatabase()
 
   const job = await db

@@ -17,7 +17,12 @@ const Card = ({ job }) => {
           <p className="postedAt">{job.postedAt}</p>
           <p className="contract">{job.contract}</p>
           <h3 className="position">
-            <Link href={`/details/${job.company.toLowerCase()}/${job._id}`}>
+            <Link
+              href="/details/[company]/[id]"
+              as={`/details/${job.company.toLowerCase().replace(/\s+/g, '')}/${
+                job._id
+              }`}
+            >
               <a>{job.position}</a>
             </Link>
           </h3>
