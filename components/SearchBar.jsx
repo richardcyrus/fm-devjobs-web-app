@@ -7,11 +7,7 @@ import Button from './Button'
 
 const SearchBar = ({ onSubmit }) => {
   const themeCtx = useContext(ThemeContext)
-  const {
-    register,
-    handleSubmit,
-    formState: { isDirty },
-  } = useFormContext()
+  const { register, handleSubmit } = useFormContext()
 
   return (
     <>
@@ -95,12 +91,7 @@ const SearchBar = ({ onSubmit }) => {
               </span>
             </label>
           </div>
-          <Button
-            type="submit"
-            variant="primary"
-            data-button-role="search"
-            disabled={!isDirty}
-          >
+          <Button type="submit" variant="primary" data-button-role="search">
             Search
           </Button>
         </form>
