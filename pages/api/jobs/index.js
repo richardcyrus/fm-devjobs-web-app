@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     queryFragment.push({ location: { $in: [locationParam] } })
   }
 
-  if (contract) {
+  if (contract && contract !== 'false') {
     queryFragment.push({ contract })
   }
 

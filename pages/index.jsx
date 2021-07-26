@@ -38,10 +38,6 @@ export default function Home() {
   const onSubmit = (data) => {
     setIsFilterModalOpen(false)
 
-    if (!data.contract) {
-      delete data.contract
-    }
-
     setFilters({ ...filters, ...data })
   }
 
