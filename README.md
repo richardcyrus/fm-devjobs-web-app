@@ -33,6 +33,7 @@ Users should be able to:
 
 ### Links
 
+- [Solution](https://www.frontendmentor.io/solutions/devjobs-web-app-nextjs-mongodb-react-query-react-hook-form-rjRfBBiC6)
 - [Repository](https://github.com/richardcyrus/fm-devjobs-web-app)
 - [Live Site](https://fm-devjobs-web-app.vercel.app/)
 
