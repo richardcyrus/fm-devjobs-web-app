@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');*/
+
+@theme {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-gray-100: hsl(var(--color-secondary-light-grey));
+  --color-gray-300: hsl(var(--color-secondary-grey));
+  --color-gray-500: hsl(var(--color-secondary-dark-grey));
+
+  --color-violet-100: hsl(var(--color-primary-light-violet));
+  --color-violet-300: hsl(var(--color-primary-violet));
+
+  --color-blue-800: hsl(var(--color-primary-very-dark-blue));
+  --color-blue-950: hsl(var(--color-primary-midnight));
+
+  --font-*: initial;
+  --font-sans: 'Kumbh Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --grid-template-columns-checkbox: min-content auto;
+
+  --transition-duration-25: 25ms;
+
+  --shadow-button-focus: 0 0 0 2px #bbbdff;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  :root {
+    --color-primary-midnight: 220 29% 10%;
+    --color-primary-very-dark-blue: 219 29% 14%;
+    --color-primary-light-violet: 235 82% 77%;
+    --color-primary-violet: 235 69% 61%;
+    --color-secondary-dark-grey: 214 17% 51%;
+    --color-secondary-grey: 212 23% 69%;
+    --color-secondary-light-grey: 210 22% 96%;
+
+    --font-size-body: 1rem;
+    --font-size-h1: 1.25rem;
+    --font-size-h2: 1.25rem;
+    --font-size-h3: 1.25rem;
+    --font-size-h4: 0.875rem;
+    --font-weight-bold: 700;
+    --font-weight-regular: 400;
+    --line-height-body: 1.625rem;
+    --line-height-h1: 1.5rem;
+    --line-height-h2: 1.5rem;
+    --line-height-h3: 1.5rem;
+    --line-height-h4: 1.125rem;
+  }
+}
+
+html,
+body {
+  @apply bg-gray-100 font-sans text-base font-normal leading-relaxed text-gray-300 dark:bg-blue-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+button {
+  @media screen and (-ms-high-contrast: active) {
+    border: 2px solid currentColor;
+  }
+}
+
+#main-content button[data-button-role='get-more'] {
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 48em) {
+    margin-top: 3.5em;
+  }
+}
+
+#main-content button[data-button-role='search'] {
+  @media screen and (min-width: 48em) {
+    align-self: center;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 5em;
+  }
+
+  @media screen and (min-width: 75em) {
+    min-width: 7.6875em;
+  }
+}
+
+#main-content {
+  button[data-button-role='mobile-filter-open'],
+  button[data-button-role='mobile-search'] {
+    margin: 0;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  button[data-button-role='mobile-filter-open'] {
+    margin-right: 0.5em;
+  }
+
+  button[data-button-role='mobile-filter-open'] path {
+    fill: hsl(var(--color-secondary-dark-grey));
+  }
+
+  button[data-button-role='mobile-search'] path {
+    fill: white;
+  }
+}
+
+.dark #main-content button[data-button-role='mobile-filter-open'] path {
+  fill: white;
+}
+
+#main-content button[data-button-role='mobile-modal-search'] {
+  align-self: center;
+  margin: 0;
+  min-width: 279px;
+}

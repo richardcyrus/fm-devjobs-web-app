@@ -1,13 +1,18 @@
 {
   "name": "devjobs-web-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This is a solution to the Devjobs web app challenge on Frontend Mentor. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "format": "biome format --write",
+    "lint": "biome lint --write",
+    "check": "biome check --write",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -20,28 +25,45 @@
     "url": "https://github.com/richardcyrus/fm-devjobs-web-app/issues"
   },
   "homepage": "https://github.com/richardcyrus/fm-devjobs-web-app#readme",
-  "dependencies": {
-    "axios": "0.21.1",
-    "mongodb": "4.0.1",
-    "next": "11.0.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-hook-form": "7.11.0",
-    "react-query": "3.19.0"
+  "volta": {
+    "node": "24.12.0"
   },
   "devDependencies": {
-    "@styled-jsx/plugin-sass": "3.0.0",
-    "eslint": "7.30.0",
-    "eslint-config-next": "11.0.1",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-config-standard": "16.0.3",
-    "eslint-plugin-import": "2.23.4",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "3.4.0",
-    "eslint-plugin-promise": "5.1.0",
-    "eslint-plugin-react": "7.24.0",
-    "prettier": "2.3.2",
-    "sass": "1.35.2",
-    "standard": "16.0.3"
+    "@biomejs/biome": "2.3.10",
+    "@tanstack/devtools-vite": "^0.3.12",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "husky": "^9.1.7",
+    "jsdom": "^27.3.0",
+    "lint-staged": "^16.2.7",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16",
+    "web-vitals": "^5.1.0"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-devtools": "^0.8.4",
+    "@tanstack/react-router": "^1.141.6",
+    "@tanstack/react-router-devtools": "^1.141.6",
+    "@tanstack/react-router-ssr-query": "^1.141.6",
+    "@tanstack/react-start": "^1.141.7",
+    "@tanstack/router-plugin": "^1.141.7",
+    "class-variance-authority": "^0.7.1",
+    "nitro": "latest",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18",
+    "vite-tsconfig-paths": "^6.0.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --write --no-errors-on-unmatched"
+    ]
   }
 }

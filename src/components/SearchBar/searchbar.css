@@ -1,0 +1,27 @@
+.checkbox__control {
+  transition: transform 0.1s ease-in 25ms;
+
+  & svg {
+    transform-origin: bottom left;
+    transform: scale(0);
+    transition: transform 0.1s ease-in 25ms;
+  }
+}
+
+.checkbox__input input:checked + .checkbox__control {
+  background-color: hsl(var(--color-primary-violet));
+}
+
+.checkbox__input input:hover + .checkbox__control {
+  background-color: rgba(89, 100, 224, 0.25);
+}
+
+.checkbox__input input:checked + .checkbox__control svg {
+  transform: scale(1);
+}
+
+.checkbox__input input:focus + .checkbox__control {
+  box-shadow:
+    0 0 0 0.05em #fff,
+    0 0 0.15em 0.1em hsl(var(--color-primary-violet));
+}

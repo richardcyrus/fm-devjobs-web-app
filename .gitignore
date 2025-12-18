@@ -203,3 +203,13 @@ typings/
 *.xd
 
 .vercel
+
+node_modules
+dist
+dist-ssr
+*.local
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi

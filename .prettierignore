@@ -1,7 +1,0 @@
-dist
-.next
-.idea
-.nova
-.vscode
-node_modules/
-**/*.ts

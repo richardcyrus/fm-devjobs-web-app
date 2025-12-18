@@ -1,0 +1,16 @@
+{
+  "short_name": "Devjobs Web App",
+  "name": "Frontend Mentor - Devjobs Web App",
+  "description": "This is a solution to the Devjobs web app challenge on Frontend Mentor.",
+  "icons": [
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32 24x24 16x16",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
