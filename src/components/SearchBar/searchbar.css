@@ -1,11 +1,11 @@
 .checkbox__control {
   transition: transform 0.1s ease-in 25ms;
+}
 
-  & svg {
-    transform-origin: bottom left;
-    transform: scale(0);
-    transition: transform 0.1s ease-in 25ms;
-  }
+.checkbox__control svg {
+  transform-origin: bottom left;
+  transform: scale(0);
+  transition: transform 0.1s ease-in 25ms;
 }
 
 .checkbox__input input:checked + .checkbox__control {
