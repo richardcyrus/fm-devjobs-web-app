@@ -48,6 +48,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "^0.8.4",
+    "@tanstack/react-form": "1.27.5",
     "@tanstack/react-router": "^1.141.6",
     "@tanstack/react-router-devtools": "^1.141.6",
     "@tanstack/react-router-ssr-query": "^1.141.6",
@@ -59,7 +60,8 @@
     "react-dom": "^19.2.3",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
-    "vite-tsconfig-paths": "^6.0.3"
+    "vite-tsconfig-paths": "^6.0.3",
+    "zod": "^4.2.1"
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
