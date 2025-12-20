@@ -5,10 +5,14 @@ export function SearchButton({
   buttonRole,
   buttonIntent,
   block,
+  isMobile,
+  formId,
 }: {
   buttonRole?: string
   buttonIntent?: 'primary' | 'secondary' | 'filter'
   block?: boolean
+  isMobile?: boolean
+  formId?: string
 }) {
   const form = useFormContext()
 
@@ -21,8 +25,25 @@ export function SearchButton({
           data-button-role={buttonRole}
           disabled={isSubmitting}
           block={block}
+          form={formId}
         >
-          Search
+          {isMobile ? (
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Search</title>
+              <path
+                d="M17.112 15.059h-1.088l-.377-.377a8.814 8.814 0 002.15-5.784A8.898 8.898 0 008.898 0 8.898 8.898 0 000 8.898a8.898 8.898 0 008.898 8.899c2.211 0 4.23-.808 5.784-2.143l.377.377v1.081l6.845 6.832 2.04-2.04-6.832-6.845zm-8.214 0A6.16 6.16 0 118.9 2.737a6.16 6.16 0 010 12.322z"
+                fill="#5964E0"
+                fillRule="nonzero"
+              />
+            </svg>
+          ) : (
+            'Search'
+          )}
         </Button>
       )}
     </form.Subscribe>
@@ -32,9 +53,11 @@ export function SearchButton({
 export function TextField({
   placeholder,
   className,
+  formId,
 }: {
   placeholder?: string
   className?: string
+  formId?: string
 }) {
   const field = useFieldContext<string>()
 
@@ -48,17 +71,24 @@ export function TextField({
       onChange={(e) => field.handleChange(e.target.value)}
       value={field.state.value}
       className={className}
+      form={formId}
     />
   )
 }
 
-export function CheckboxField({ isMobile }: { isMobile: boolean }) {
+export function CheckboxField({
+  isMobile,
+  formId,
+}: {
+  isMobile: boolean
+  formId?: string
+}) {
   const field = useFieldContext<boolean>()
 
   return (
     <label
       htmlFor="contract"
-      className={`"${isMobile ? '' : 'contract-label'} grid grid-cols-checkbox gap-x-4 font-bold text-blue-800 dark:text-white"`}
+      className={`${isMobile ? '' : 'contract-label'} grid grid-cols-checkbox gap-x-4 font-bold text-blue-800 dark:text-white`}
     >
       <span className="checkbox__input grid [grid-template-areas:'checkbox']">
         <input
@@ -69,6 +99,7 @@ export function CheckboxField({ isMobile }: { isMobile: boolean }) {
           onChange={(e) => field.handleChange(e.target.checked)}
           checked={field.state.value}
           className="h-6 w-6 opacity-0 [grid-area:checkbox]"
+          form={formId}
         />
         <span className="checkbox__control inline-grid h-6 w-6 place-items-center rounded-[0.1875rem] bg-blue-800/10 [grid-area:checkbox] dark:bg-white/10">
           <svg
@@ -89,10 +120,10 @@ export function CheckboxField({ isMobile }: { isMobile: boolean }) {
         </span>
       </span>
       <span
-        className={`"${isMobile ? '' : 'radio__label justify-items-center'}"`}
+        className={`${isMobile ? '' : 'radio__label justify-items-center'}`}
       >
         Full Time
-        <span className={`"${isMobile ? '' : 'sm:max-lg:hidden'}"`}> Only</span>
+        <span className={`${isMobile ? '' : 'sm:max-lg:hidden'}`}> Only</span>
       </span>
     </label>
   )

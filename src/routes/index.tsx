@@ -1,3 +1,4 @@
+import { formOptions } from '@tanstack/react-form'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { MobileSearchBar } from '@/components/SearchBar/MobileSearchBar'
@@ -6,6 +7,22 @@ import { useAppForm } from '@/hooks/searchBarForm'
 import useWindowSize from '@/hooks/useWindowSize.ts'
 
 export const Route = createFileRoute('/')({ component: Home })
+
+type SearchForm = {
+  position: string
+  location: string
+  contract: boolean
+}
+
+const defaultSearchForm: SearchForm = {
+  position: '',
+  location: '',
+  contract: false,
+}
+
+const formOpts = formOptions({
+  defaultValues: defaultSearchForm,
+})
 
 function Home() {
   const windowSize = useWindowSize()
@@ -16,17 +33,10 @@ function Home() {
     setIsFilterModalOpen(!isFilterModalOpen)
   }
 
-  const onSubmit = () => {
-    setIsFilterModalOpen(false)
-  }
-
   const form = useAppForm({
-    defaultValues: {
-      position: '',
-      location: '',
-      contract: false,
-    },
+    ...formOpts,
     onSubmit: ({ value }) => {
+      setIsFilterModalOpen(false)
       console.log(value)
     },
   })
@@ -39,7 +49,7 @@ function Home() {
           <SearchBar form={form} />
         ) : (
           <MobileSearchBar
-            onSubmit={onSubmit}
+            form={form}
             handleFilterClick={handleFilterClick}
             isFilterModalOpen={isFilterModalOpen}
           />

@@ -2,8 +2,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/*@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');*/
-
 @theme {
   --color-*: initial;
   --color-transparent: transparent;
@@ -113,25 +111,23 @@ button {
   }
 }
 
-#main-content {
-  button[data-button-role='mobile-filter-open'],
-  button[data-button-role='mobile-search'] {
-    margin: 0;
-    min-width: 48px;
-    min-height: 48px;
-  }
+#main-content button[data-button-role='mobile-filter-open'],
+#main-content button[data-button-role='mobile-search'] {
+  margin: 0;
+  min-width: 48px;
+  min-height: 48px;
+}
 
-  button[data-button-role='mobile-filter-open'] {
-    margin-right: 0.5em;
-  }
+#main-content  button[data-button-role='mobile-filter-open'] {
+  margin-right: 0.5em;
+}
 
-  button[data-button-role='mobile-filter-open'] path {
-    fill: hsl(var(--color-secondary-dark-grey));
-  }
+#main-content  button[data-button-role='mobile-filter-open'] path {
+  fill: hsl(var(--color-secondary-dark-grey));
+}
 
-  button[data-button-role='mobile-search'] path {
-    fill: white;
-  }
+#main-content  button[data-button-role='mobile-search'] path {
+  fill: white;
 }
 
 .dark #main-content button[data-button-role='mobile-filter-open'] path {

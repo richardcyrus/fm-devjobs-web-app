@@ -12,15 +12,15 @@
       "**/.vscode/**/*",
       "**/index.html",
       "**/vite.config.js",
-      "!**/src/routeTree.gen.ts",
       "!**/src/styles.css",
+      "!**/src/routeTree.gen.ts",
       "!**/.vscode/.history/**/*"
     ]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space",
     "formatWithErrors": false,
+    "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
     "attributePosition": "auto"
