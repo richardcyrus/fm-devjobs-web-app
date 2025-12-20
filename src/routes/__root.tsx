@@ -58,7 +58,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Header />
           <main
             id="main-content"
-            className="mx-auto my-auto flex max-w-[327px] flex-col md:max-w-[689px] md:items-center md:justify-center lg:max-w-[1110px]"
+            className="mx-auto flex flex-col max-w-[327px] md:items-center md:justify-center md:max-w-[689px] lg:max-w-[1110px]"
           >
             {children}
           </main>

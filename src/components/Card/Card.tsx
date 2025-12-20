@@ -1,111 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
+import { Link } from '@tanstack/react-router'
 
-import Link from 'next/link'
-import { useContext } from 'react'
-import { ThemeContext } from '../context/ThemeContext'
-
-const Card = ({ job }) => {
-  const themeCtx = useContext(ThemeContext)
-
+export function Card({ job }) {
   return (
-    <>
-      <div className="card">
-        <div className="card-image">
-          <img src={job.logo} alt={`${job.company} logo`} />
-        </div>
-        <div className="card-body">
-          <p className="postedAt">{job.postedAt}</p>
-          <p className="contract">{job.contract}</p>
-          <h3 className="position">
-            <Link
-              href="/details/[company]/[id]"
-              as={`/details/${job.company.toLowerCase().replace(/\s+/g, '')}/${
-                job._id
-              }`}
-            >
-              <a>{job.position}</a>
-            </Link>
-          </h3>
-          <p className="company">{job.company}</p>
-          <h4 className="location">{job.location}</h4>
-        </div>
+    <div className="card rounded-md bg-white mb-0 mx-auto mt-[3.0625em] relative w-[327px] pt-[3.0625em] pb-[2em] px-[2em] md:mx-0 md:mt-[4.0625em] md:w-[339px] lg:w-[350px] dark:bg-blue-800">
+      <div
+        className="card-image flex items-center rounded-[15px] h-[50px] justify-center absolute top-[-25px] w-[50px]"
+        style={{ backgroundColor: `${job.logoBackground}` }}
+      >
+        <img
+          src={job.logo}
+          alt={`${job.company} logo`}
+          className="self-center m-auto"
+        />
       </div>
-      <style jsx>{`
-        .card {
-          background-color: ${themeCtx.theme.cardBackgroundColor};
-          border-radius: 6px;
-          margin-bottom: 0;
-          margin-left: auto;
-          margin-right: auto;
-          margin-top: 3.0625em;
-          padding: 3.0625em 2em 2em;
-          position: relative;
-          width: 327px;
-
-          @media screen and (min-width: 48em) {
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 4.0625em;
-            width: 339px;
-          }
-
-          @media screen and (min-width: 75em) {
-            width: 350px;
-          }
-        }
-
-        .card-image {
-          align-items: center;
-          background-color: ${job.logoBackground};
-          border-radius: 15px;
-          display: flex;
-          height: 50px;
-          justify-content: center;
-          position: absolute;
-          top: -25px;
-          width: 50px;
-
-          img {
-            align-self: center;
-            margin: auto;
-          }
-        }
-
-        .postedAt,
-        .contract {
-          display: inline-flex;
-        }
-
-        .postedAt::after {
-          content: '${'\\2022'}';
-          padding: 0 0.75em;
-        }
-
-        .position a {
-          color: ${themeCtx.theme.headingTextColor};
-          text-decoration: none;
-
-          &:visited {
-            color: ${themeCtx.theme.headingTextColor};
-          }
-
-          &:hover,
-          &:active {
-            color: ${themeCtx.theme.headingHoverColor};
-          }
-        }
-
-        .position,
-        .company {
-          margin-top: 0.8125em;
-        }
-
-        .location {
-          margin-top: 2.5em;
-        }
-      `}</style>
-    </>
+      <div className="card-body">
+        <p className="postedAt inline-flex after:py-0 after:px-[.75em] after:content-['\2022']">
+          {job.postedAt}
+        </p>
+        <p className="contract inline-flex">{job.contract}</p>
+        <h3 className="position mt-[.8125em]">
+          <Link
+            to={`/details/${job.company.toLowerCase().replace(/\s+/g, '')}/${job.id}`}
+            className="text-blue-800 visited:text-blue-800 hover:text-gray-500 active:text-gray-500 dark:text-white dark:visited:text-white dark:hover:text-gray-500 dark:active:text-gray-500"
+          >
+            {job.position}
+          </Link>
+        </h3>
+        <p className="company mt-[.8125em]">{job.company}</p>
+        <h4 className="location mt-[2.5em]">{job.location}</h4>
+      </div>
+    </div>
   )
 }
-
-export default Card
