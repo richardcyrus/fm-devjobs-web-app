@@ -42,7 +42,10 @@ function Home() {
   })
 
   return (
-    <>
+    <main
+      id="main-content"
+      className="mx-auto flex flex-col max-w-[327px] md:items-center md:justify-center md:max-w-[689px] lg:max-w-[1110px]"
+    >
       {
         //@ts-expect-error TS18048
         windowSize.width >= 768 ? (
@@ -68,6 +71,6 @@ function Home() {
       >
         Load More
       </Button>
-    </>
+    </main>
   )
 }

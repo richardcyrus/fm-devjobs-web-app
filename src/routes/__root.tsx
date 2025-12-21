@@ -56,12 +56,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <div className="mx-auto my-0 max-w-[375px] md:max-w-[768px] lg:max-w-full">
           <Header />
-          <main
-            id="main-content"
-            className="mx-auto flex flex-col max-w-[327px] md:items-center md:justify-center md:max-w-[689px] lg:max-w-[1110px]"
-          >
-            {children}
-          </main>
+          {children}
         </div>
         <TanStackDevtools
           config={{

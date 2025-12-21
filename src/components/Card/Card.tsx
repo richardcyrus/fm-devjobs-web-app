@@ -21,7 +21,11 @@ export function Card({ job }) {
         <p className="contract inline-flex">{job.contract}</p>
         <h3 className="position mt-[.8125em]">
           <Link
-            to={`/details/${job.company.toLowerCase().replace(/\s+/g, '')}/${job.id}`}
+            to="/details/$company/$jobId"
+            params={{
+              company: job.company.toLowerCase().replace(/\s+/g, ''),
+              jobId: job.id,
+            }}
             className="text-blue-800 visited:text-blue-800 hover:text-gray-500 active:text-gray-500 dark:text-white dark:visited:text-white dark:hover:text-gray-500 dark:active:text-gray-500"
           >
             {job.position}

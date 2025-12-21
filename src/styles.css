@@ -70,6 +70,15 @@
     --line-height-h3: 1.5rem;
     --line-height-h4: 1.125rem;
   }
+
+  @media screen and (min-width: 48em) {
+    :root {
+      --font-size-h1: 1.75rem;
+      --font-size-h2: 1.5rem;
+      --line-height-h1: 2.125rem;
+      --line-height-h2: 1.8125rem;
+    }
+  }
 }
 
 html,
