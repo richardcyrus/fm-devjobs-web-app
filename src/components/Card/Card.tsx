@@ -3,19 +3,19 @@ import { Link } from '@tanstack/react-router'
 
 export function Card({ job }) {
   return (
-    <div className="card rounded-md bg-white mb-0 mx-auto mt-[3.0625em] relative w-[327px] pt-[3.0625em] pb-[2em] px-[2em] md:mx-0 md:mt-[4.0625em] md:w-[339px] lg:w-[350px] dark:bg-blue-800">
+    <div className="card relative mx-auto mt-[3.0625em] mb-0 w-[327px] rounded-md bg-white px-[2em] pt-[3.0625em] pb-[2em] md:mx-0 md:mt-[4.0625em] md:w-[339px] lg:w-[350px] dark:bg-blue-800">
       <div
-        className="card-image flex items-center rounded-[15px] h-[50px] justify-center absolute top-[-25px] w-[50px]"
+        className="card-image absolute top-[-25px] flex h-[50px] w-[50px] items-center justify-center rounded-[15px]"
         style={{ backgroundColor: `${job.logoBackground}` }}
       >
         <img
           src={job.logo}
           alt={`${job.company} logo`}
-          className="self-center m-auto"
+          className="m-auto self-center"
         />
       </div>
       <div className="card-body">
-        <p className="postedAt inline-flex after:py-0 after:px-[.75em] after:content-['\2022']">
+        <p className="postedAt inline-flex after:px-[.75em] after:py-0 after:content-['\2022']">
           {job.postedAt}
         </p>
         <p className="contract inline-flex">{job.contract}</p>

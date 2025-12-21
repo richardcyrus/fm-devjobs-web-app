@@ -1,0 +1,10 @@
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+dist
+.next
+.idea
+.nova
+.vscode
+node_modules/
+**/*.ts

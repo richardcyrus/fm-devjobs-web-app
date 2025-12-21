@@ -11,7 +11,7 @@ export const MobileSearchBar = withForm({
   render: function Render({ form, handleFilterClick, isFilterModalOpen }) {
     return (
       <>
-        <div className="mt-[-40px] h-20 w-[327px] rounded-md bg-white pe-4 ps-6 dark:bg-blue-800">
+        <div className="mt-[-40px] h-20 w-[327px] rounded-md bg-white ps-6 pe-4 dark:bg-blue-800">
           <form
             id="mobile-search"
             action={searchJobs.url}
@@ -28,7 +28,7 @@ export const MobileSearchBar = withForm({
                 {(field) => (
                   <field.TextField
                     placeholder="Filter by title&hellip;"
-                    className="w-[19ch] border-none bg-transparent text-blue-800 placeholder-shown:text-blue-800/50 focus:outline-solid focus:outline-transparent dark:text-white dark:placeholder:text-white/50"
+                    className="w-[19ch] border-none bg-transparent text-blue-800 placeholder-shown:text-blue-800/50 focus:outline-transparent focus:outline-solid dark:text-white dark:placeholder:text-white/50"
                     formId="mobile-search"
                   />
                 )}

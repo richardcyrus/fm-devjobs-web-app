@@ -4,8 +4,8 @@ import { withForm } from '@/hooks/searchBarForm'
 export const MobileSearchModal = withForm({
   render: function Render({ form }) {
     return (
-      <div className="fixed left-0 top-0 z-20 flex h-screen w-screen flex-col overflow-x-hidden bg-black/50">
-        <div className="absolute left-6 top-[225px] h-[217px] w-[327px] rounded-md bg-white px-6 dark:bg-blue-800">
+      <div className="fixed top-0 left-0 z-20 flex h-screen w-screen flex-col overflow-x-hidden bg-black/50">
+        <div className="absolute top-[225px] left-6 h-[217px] w-[327px] rounded-md bg-white px-6 dark:bg-blue-800">
           <div className="flex flex-col items-center">
             <div className="flex h-[72px] w-full items-center gap-x-4 border-b border-solid border-blue-800/20 placeholder-shown:text-blue-800/50 dark:border-b-gray-500/20">
               <span>
@@ -28,7 +28,7 @@ export const MobileSearchModal = withForm({
                   <field.TextField
                     placeholder="Filter by location&hellip;"
                     formId="mobile-search"
-                    className="border-none bg-transparent text-blue-800 placeholder-shown:text-blue-800/50 focus:outline-solid focus:outline-transparent dark:text-white dark:placeholder:text-white/50"
+                    className="border-none bg-transparent text-blue-800 placeholder-shown:text-blue-800/50 focus:outline-transparent focus:outline-solid dark:text-white dark:placeholder:text-white/50"
                   />
                 )}
               </form.AppField>

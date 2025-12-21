@@ -20,16 +20,16 @@ function JobDetail() {
   const { job } = Route.useLoaderData()
   return (
     <>
-      <div className="job-detail__container flex flex-col mx-auto w-[327px] md:items-center md:justify-center md:w-[689px] lg:w-[730px]">
-        <section className="job-detail__company items-center bg-white dark:bg-blue-800 rounded-[6px] flex flex-col justify-center mx-auto mt-[-1rem] pb-8 pt-[3.0625rem] relative w-[327px] md:grid md:grid-cols-[140px_1fr_1fr] md:h-[140px] md:mt-[-2rem] md:p-0 md:w-[689px] lg:w-[730px]">
+      <div className="job-detail__container mx-auto flex w-[327px] flex-col md:w-[689px] md:items-center md:justify-center lg:w-[730px]">
+        <section className="job-detail__company relative mx-auto mt-[-1rem] flex w-[327px] flex-col items-center justify-center rounded-[6px] bg-white pt-[3.0625rem] pb-8 md:mt-[-2rem] md:grid md:h-[140px] md:w-[689px] md:grid-cols-[140px_1fr_1fr] md:p-0 lg:w-[730px] dark:bg-blue-800">
           <div
-            className="job-detail__company-logo items-center rounded-[15px] flex h-[50px] justify-center absolute top-[-25px] w-[50px] left-[138.5px] md:rounded-es-[6px] md:rounded-ss-none md:rounded-se-none md:rounded-ee-none md:col-[1_/_2] md:h-[140px] md:static md:w-[140px]"
+            className="job-detail__company-logo absolute top-[-25px] left-[138.5px] flex h-[50px] w-[50px] items-center justify-center rounded-[15px] md:static md:col-[1_/_2] md:h-[140px] md:w-[140px] md:rounded-ss-none md:rounded-se-none md:rounded-ee-none md:rounded-es-[6px]"
             style={{ backgroundColor: `${job.logoBackground}` }}
           >
             <img
               src={job.logo}
               alt={`${job.company} logo`}
-              className="self-center m-auto md:w-[58%]"
+              className="m-auto self-center md:w-[58%]"
             />
           </div>
           <div className="job-detail__company-info text-center md:col-[2_/_3] md:ps-10 md:text-left">
@@ -38,19 +38,19 @@ function JobDetail() {
             </h2>
             <p className="mt-2">{`${job.company.toLowerCase().replace(/\s+/g, '')}.com`}</p>
           </div>
-          <div className="job-detail__company-cta md:ms-auto md:pe-10 md:col-[3_/_-1]">
+          <div className="job-detail__company-cta md:col-[3_/_-1] md:ms-auto md:pe-10">
             <Link
               to={job.website}
-              className="mt-6 md:mt-0 text-violet-300 dark:text-white bg-violet-100/10 hover:bg-violet-300 button inline-flex cursor-pointer items-center justify-center self-start rounded-[5px] border-none p-0 font-sans font-bold min-h-12 min-w-[148px] text-center focus:outline-solid focus:outline-transparent focus:shadow-button-focus"
+              className="button mt-6 inline-flex min-h-12 min-w-[148px] cursor-pointer items-center justify-center self-start rounded-[5px] border-none bg-violet-100/10 p-0 text-center font-sans font-bold text-violet-300 hover:bg-violet-300 focus:shadow-button-focus focus:outline-transparent focus:outline-solid md:mt-0 dark:text-white"
             >
               Company Site
             </Link>
           </div>
         </section>
-        <section className="job-info bg-white dark:bg-blue-800 rounded-[6px] mt-6 py-10 px-6 md:mt-8 md:p-12">
-          <div className="job-meta md:items-center md:flex md:justify-between">
+        <section className="job-info mt-6 rounded-[6px] bg-white px-6 py-10 md:mt-8 md:p-12 dark:bg-blue-800">
+          <div className="job-meta md:flex md:items-center md:justify-between">
             <div className="job-info__meta">
-              <p className="postedAt inline-flex after:py-0 after:px-[.75em] after:content-['\2022']">
+              <p className="postedAt inline-flex after:px-[.75em] after:py-0 after:content-['\2022']">
                 {job.postedAt}
               </p>
               <p className="contract inline-flex">{job.contract}</p>
@@ -62,7 +62,7 @@ function JobDetail() {
             <div className="job-info__cta mt-[3.125rem] md:mt-0">
               <Link
                 to={job.apply}
-                className="text-white bg-violet-300 w-full md:w-auto hover:bg-violet-100 button inline-flex cursor-pointer items-center justify-center self-start rounded-[5px] border-none p-0 font-sans font-bold min-h-12 min-w-[141px] text-center focus:outline-solid focus:outline-transparent focus:shadow-button-focus"
+                className="button inline-flex min-h-12 w-full min-w-[141px] cursor-pointer items-center justify-center self-start rounded-[5px] border-none bg-violet-300 p-0 text-center font-sans font-bold text-white hover:bg-violet-100 focus:shadow-button-focus focus:outline-transparent focus:outline-solid md:w-auto"
               >
                 Apply Now
               </Link>
@@ -70,29 +70,29 @@ function JobDetail() {
           </div>
           <div className="job-description mt-8 md:mt-10">
             <p>{job.description}</p>
-            <h3 className="text-blue-800 dark:text-white mt-10">
+            <h3 className="mt-10 text-blue-800 dark:text-white">
               Requirements
             </h3>
             <p className="mt-6">{job.requirements.content}</p>
-            <ul className="mt-8 ps-4 md:mt-6 list-disc">
+            <ul className="mt-8 list-disc ps-4 md:mt-6">
               {job.requirements.items.map((item, index) => (
                 <li
                   key={index}
-                  className="mt-2 ps-6 marker:text-violet-300 marker:font-bold"
+                  className="mt-2 ps-6 marker:font-bold marker:text-violet-300"
                 >
                   {item}
                 </li>
               ))}
             </ul>
-            <h3 className="text-blue-800 dark:text-white mt-10">
+            <h3 className="mt-10 text-blue-800 dark:text-white">
               What You Will Do
             </h3>
             <p className="mt-6">{job.role.content}</p>
-            <ol className="mt-8 ps-4 md:mt-6 list-[not-dotted-decimal]">
+            <ol className="mt-8 list-[not-dotted-decimal] ps-4 md:mt-6">
               {job.role.items.map((item, index) => (
                 <li
                   key={index}
-                  className="mt-2 ps-6 marker:text-violet-300 marker:font-bold"
+                  className="mt-2 ps-6 marker:font-bold marker:text-violet-300"
                 >
                   {item}
                 </li>
@@ -101,15 +101,15 @@ function JobDetail() {
           </div>
         </section>
       </div>
-      <div className="job-detail__footer bg-white dark:bg-blue-800 mt-16 p-6 md:mt-[3.125em] md:py-6 md:px-0 lg:mt-20">
-        <div className="wrapper md:items-center md:flex md:justify-between md:my-0 md:mx-auto md:w-[678px] lg:w-[730px]">
+      <div className="job-detail__footer mt-16 bg-white p-6 md:mt-[3.125em] md:px-0 md:py-6 lg:mt-20 dark:bg-blue-800">
+        <div className="wrapper md:mx-auto md:my-0 md:flex md:w-[678px] md:items-center md:justify-between lg:w-[730px]">
           <div className="job-meta hidden md:block">
             <h3 className="text-blue-800 dark:text-white">{job.position}</h3>
             <p className="mt-2">{job.company}</p>
           </div>
           <Link
             to={job.apply}
-            className="text-white bg-violet-300 w-full md:w-auto hover:bg-violet-100 button inline-flex cursor-pointer items-center justify-center self-start rounded-[5px] border-none p-0 font-sans font-bold min-h-12 min-w-[141px] text-center focus:outline-solid focus:outline-transparent focus:shadow-button-focus"
+            className="button inline-flex min-h-12 w-full min-w-[141px] cursor-pointer items-center justify-center self-start rounded-[5px] border-none bg-violet-300 p-0 text-center font-sans font-bold text-white hover:bg-violet-100 focus:shadow-button-focus focus:outline-transparent focus:outline-solid md:w-auto"
           >
             Apply Now
           </Link>

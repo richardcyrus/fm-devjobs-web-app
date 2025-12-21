@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -83,7 +83,7 @@
 
 html,
 body {
-  @apply bg-gray-100 font-sans text-base font-normal leading-relaxed text-gray-300 dark:bg-blue-950;
+  @apply bg-gray-100 font-sans text-base leading-relaxed font-normal text-gray-300 dark:bg-blue-950;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -92,7 +92,7 @@ body {
 
 @counter-style not-dotted-decimal {
   system: numeric;
-  symbols: '\30''\31''\32''\33''\34''\35''\36''\37''\38''\39';
+  symbols: '\30' '\31' '\32' '\33' '\34' '\35' '\36' '\37' '\38' '\39';
   /* symbols: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9'; */
   suffix: ' ';
 }
@@ -113,7 +113,7 @@ h4 {
 h1,
 h2,
 h3 {
-  @apply text-blue-800 dark:text-white
+  @apply text-blue-800 dark:text-white;
 }
 
 h1 {
@@ -129,7 +129,7 @@ h3 {
 }
 
 h4 {
-  @apply text-violet-300 text-(length:--font-size-h4) leading-(--line-height-h4);
+  @apply text-(length:--font-size-h4) leading-(--line-height-h4) text-violet-300;
 }
 
 #main-content button[data-button-role='search'] {
@@ -153,15 +153,15 @@ h4 {
   min-height: 48px;
 }
 
-#main-content  button[data-button-role='mobile-filter-open'] {
+#main-content button[data-button-role='mobile-filter-open'] {
   margin-right: 0.5em;
 }
 
-#main-content  button[data-button-role='mobile-filter-open'] path {
+#main-content button[data-button-role='mobile-filter-open'] path {
   fill: hsl(var(--color-secondary-dark-grey));
 }
 
-#main-content  button[data-button-role='mobile-search'] path {
+#main-content button[data-button-role='mobile-search'] path {
   fill: white;
 }
 

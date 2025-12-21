@@ -27,7 +27,8 @@ const button = cva('button', {
 })
 
 export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>,
+  extends
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'>,
     VariantProps<typeof button> {}
 
 export const Button: React.FC<ButtonProps> = ({
@@ -44,7 +45,7 @@ export const Button: React.FC<ButtonProps> = ({
         button({ intent, block, disabled }),
         className,
         'button inline-flex cursor-pointer items-center justify-center self-start rounded-[5px] border-none p-0 font-sans font-bold',
-        'min-h-12 min-w-[141px] text-center focus:outline-solid focus:outline-transparent',
+        'min-h-12 min-w-[141px] text-center focus:outline-transparent focus:outline-solid',
         'focus:shadow-button-focus',
       )}
       disabled={disabled || undefined}

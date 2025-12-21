@@ -22,7 +22,7 @@ export const SearchBar = withForm({
           }}
           className="h-full md:flex md:items-center md:justify-around"
         >
-          <div className="h-full md:flex md:w-[222px] md:items-center md:justify-start md:gap-x-4 md:border-r md:border-r-gray-500/20 md:pe-5 md:ps-6 lg:w-[463px] lg:px-8">
+          <div className="h-full md:flex md:w-[222px] md:items-center md:justify-start md:gap-x-4 md:border-r md:border-r-gray-500/20 md:ps-6 md:pe-5 lg:w-[463px] lg:px-8">
             <span>
               <svg
                 viewBox="0 0 24 24"
@@ -42,12 +42,12 @@ export const SearchBar = withForm({
               {(field) => (
                 <field.TextField
                   placeholder="Filter by title&hellip;"
-                  className="border-0 border-none bg-transparent text-blue-800 placeholder:text-blue-800/50 focus:outline-hidden focus:outline-solid focus:outline-transparent md:w-[14ch] lg:w-[50ch] dark:text-white dark:placeholder:text-white/50"
+                  className="border-0 border-none bg-transparent text-blue-800 placeholder:text-blue-800/50 focus:outline-hidden focus:outline-transparent focus:outline-solid md:w-[14ch] lg:w-[50ch] dark:text-white dark:placeholder:text-white/50"
                 />
               )}
             </form.AppField>
           </div>
-          <div className="h-full md:flex md:w-[213px] md:items-center md:justify-start md:gap-x-4 md:border-r md:border-r-gray-500/20 md:pe-5 md:ps-6 lg:w-[300px] lg:px-8">
+          <div className="h-full md:flex md:w-[213px] md:items-center md:justify-start md:gap-x-4 md:border-r md:border-r-gray-500/20 md:ps-6 md:pe-5 lg:w-[300px] lg:px-8">
             <span>
               <svg
                 viewBox="0 0 17 24"
@@ -67,12 +67,12 @@ export const SearchBar = withForm({
               {(field) => (
                 <field.TextField
                   placeholder="Filter by location&hellip;"
-                  className="border-0 border-none bg-transparent text-blue-800 placeholder:text-blue-800/50 focus:outline-hidden focus:outline-solid focus:outline-transparent md:w-[14ch] lg:w-[50ch] dark:text-white dark:placeholder:text-white/50"
+                  className="border-0 border-none bg-transparent text-blue-800 placeholder:text-blue-800/50 focus:outline-hidden focus:outline-transparent focus:outline-solid md:w-[14ch] lg:w-[50ch] dark:text-white dark:placeholder:text-white/50"
                 />
               )}
             </form.AppField>
           </div>
-          <div className="h-full md:flex md:items-center md:justify-start md:gap-x-4 md:pe-0 md:ps-5 lg:pe-0 lg:ps-8">
+          <div className="h-full md:flex md:items-center md:justify-start md:gap-x-4 md:ps-5 md:pe-0 lg:ps-8 lg:pe-0">
             <form.AppField name="contract">
               {(field) => <field.CheckboxField isMobile={false} />}
             </form.AppField>

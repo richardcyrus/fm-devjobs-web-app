@@ -44,7 +44,7 @@ function Home() {
   return (
     <main
       id="main-content"
-      className="mx-auto flex flex-col max-w-[327px] md:items-center md:justify-center md:max-w-[689px] lg:max-w-[1110px]"
+      className="mx-auto flex max-w-[327px] flex-col md:max-w-[689px] md:items-center md:justify-center lg:max-w-[1110px]"
     >
       {
         //@ts-expect-error TS18048
@@ -58,7 +58,7 @@ function Home() {
           />
         )
       }
-      <div className="job-cards flex flex-col mx-auto max-w-[327px] md:items-center md:justify-center md:flex-wrap md:flex-row md:max-w-[689px] md:gap-x-[.6875em] lg:max-w-[1110px] lg:gap-x-[1.875em]">
+      <div className="job-cards mx-auto flex max-w-[327px] flex-col md:max-w-[689px] md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-x-[.6875em] lg:max-w-[1110px] lg:gap-x-[1.875em]">
         {jobs.map((job) => (
           <Card key={job.id} job={job} />
         ))}
