@@ -1,5 +1,6 @@
 import * as fs from 'node:fs/promises'
 import { createServerFn } from '@tanstack/react-start'
+import { searchFormSchema } from '@/lib/formOptions.ts'
 
 const JOBS_FILE = 'data.json'
 
@@ -548,3 +549,30 @@ async function readJobs() {
 export const getJobs = createServerFn({ method: 'GET' }).handler(
   async () => await readJobs(),
 )
+
+export const searchJobs = createServerFn({
+  method: 'POST',
+})
+  .inputValidator((data: unknown) => {
+    if (!(data instanceof FormData)) {
+      throw new Error('Invalid form data')
+    }
+    return data
+  })
+  .handler(async (ctx) => {
+    const formObject = Object.fromEntries(ctx.data.entries())
+    console.log('formObject', formObject)
+    const result = searchFormSchema.safeParse(formObject)
+    console.log('result', result)
+
+    return new Response(
+      JSON.stringify({
+        success: result.success,
+        data: result.success ? result.data : result.error,
+      }),
+      {
+        headers: { 'Content-Type': 'application/json' },
+        status: result.success ? 200 : 400,
+      },
+    )
+  })

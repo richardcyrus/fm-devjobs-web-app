@@ -46,6 +46,9 @@ export const MobileSearchModal = withForm({
               buttonRole="mobile-modal-search"
               buttonIntent="primary"
               formId="mobile-search"
+              onClick={() => {
+                form.handleSubmit()
+              }}
             />
           </form.AppForm>
         </div>

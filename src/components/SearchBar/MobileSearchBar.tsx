@@ -1,5 +1,6 @@
 import { Button } from '@/components/Button/Button'
 import { MobileSearchModal } from '@/components/SearchBar/MobileSearchModal'
+import { searchJobs } from '@/data/data'
 import { withForm } from '@/hooks/searchBarForm'
 
 export const MobileSearchBar = withForm({
@@ -13,12 +14,14 @@ export const MobileSearchBar = withForm({
         <div className="mt-[-40px] h-20 w-[327px] rounded-md bg-white pe-4 ps-6 dark:bg-blue-800">
           <form
             id="mobile-search"
-            className="flex h-full items-center"
+            action={searchJobs.url}
+            method="post"
+            encType={'multipart/form-data'}
             onSubmit={(e) => {
               e.preventDefault()
-              // e.stopPropagation()
-              form.handleSubmit()
+              e.stopPropagation()
             }}
+            className="flex h-full items-center"
           >
             <div className="flex h-full items-center">
               <form.AppField name="position">
@@ -59,6 +62,9 @@ export const MobileSearchBar = withForm({
                   buttonIntent="primary"
                   isMobile={true}
                   formId="mobile-search"
+                  onClick={() => {
+                    form.handleSubmit()
+                  }}
                 />
               </form.AppForm>
             </div>

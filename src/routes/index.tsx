@@ -1,4 +1,3 @@
-import { formOptions } from '@tanstack/react-form'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { Button } from '@/components/Button/Button'
@@ -7,31 +6,18 @@ import { MobileSearchBar } from '@/components/SearchBar/MobileSearchBar'
 import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { getJobs } from '@/data/data'
 import { useAppForm } from '@/hooks/searchBarForm'
-import useWindowSize from '@/hooks/useWindowSize.ts'
+import useWindowSize from '@/hooks/useWindowSize'
+import { formOpts, searchFormSchema } from '@/lib/formOptions'
 
 export const Route = createFileRoute('/')({
-  loader: async () => await getJobs(),
+  loader: async () => ({
+    jobs: await getJobs(),
+  }),
   component: Home,
 })
 
-type SearchForm = {
-  position: string
-  location: string
-  contract: boolean
-}
-
-const defaultSearchForm: SearchForm = {
-  position: '',
-  location: '',
-  contract: false,
-}
-
-const formOpts = formOptions({
-  defaultValues: defaultSearchForm,
-})
-
 function Home() {
-  const jobs = Route.useLoaderData()
+  const { jobs } = Route.useLoaderData()
   const windowSize = useWindowSize()
 
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
@@ -42,9 +28,16 @@ function Home() {
 
   const form = useAppForm({
     ...formOpts,
-    onSubmit: ({ value }) => {
+    validators: {
+      onChange: searchFormSchema,
+    },
+    onSubmit: (params) => {
+      // console.log('params: ', params)
+      // console.log('value: ', params.value)
       setIsFilterModalOpen(false)
-      console.log(value)
+      const result = searchFormSchema.parse(params.value)
+      console.log('result: ', result)
+      // TODO: get filtered jobs from server.
     },
   })
 

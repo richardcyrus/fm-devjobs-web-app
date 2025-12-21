@@ -1,5 +1,5 @@
 import { Button } from '@/components/Button/Button'
-import { useFieldContext, useFormContext } from '@/hooks/form-context'
+import { useFieldContext, useFormContext } from '@/context/form-context'
 
 export function SearchButton({
   buttonRole,
@@ -7,12 +7,14 @@ export function SearchButton({
   block,
   isMobile,
   formId,
+  onClick,
 }: {
   buttonRole?: string
   buttonIntent?: 'primary' | 'secondary' | 'filter'
   block?: boolean
   isMobile?: boolean
   formId?: string
+  onClick?: () => void
 }) {
   const form = useFormContext()
 
@@ -26,6 +28,7 @@ export function SearchButton({
           disabled={isSubmitting}
           block={block}
           form={formId}
+          onClick={onClick}
         >
           {isMobile ? (
             <svg
@@ -100,6 +103,7 @@ export function CheckboxField({
           checked={field.state.value}
           className="h-6 w-6 opacity-0 [grid-area:checkbox]"
           form={formId}
+          value="Full Time"
         />
         <span className="checkbox__control inline-grid h-6 w-6 place-items-center rounded-[0.1875rem] bg-blue-800/10 [grid-area:checkbox] dark:bg-white/10">
           <svg

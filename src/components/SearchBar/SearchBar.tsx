@@ -1,3 +1,4 @@
+import { searchJobs } from '@/data/data'
 import { withForm } from '@/hooks/searchBarForm'
 import './searchbar.css'
 
@@ -12,12 +13,14 @@ export const SearchBar = withForm({
     return (
       <div className="mt-[-40px] h-20 w-[327px] rounded-md bg-white md:w-[689px] lg:w-[1110px] dark:bg-blue-800">
         <form
-          className="h-full md:flex md:items-center md:justify-around"
+          action={searchJobs.url}
+          method="post"
+          encType={'multipart/form-data'}
           onSubmit={(e) => {
             e.preventDefault()
-            // e.stopPropagation()
-            form.handleSubmit()
+            e.stopPropagation()
           }}
+          className="h-full md:flex md:items-center md:justify-around"
         >
           <div className="h-full md:flex md:w-[222px] md:items-center md:justify-start md:gap-x-4 md:border-r md:border-r-gray-500/20 md:pe-5 md:ps-6 lg:w-[463px] lg:px-8">
             <span>
@@ -75,7 +78,13 @@ export const SearchBar = withForm({
             </form.AppField>
           </div>
           <form.AppForm>
-            <form.SearchButton buttonRole="search" buttonIntent="primary" />
+            <form.SearchButton
+              buttonRole="search"
+              buttonIntent="primary"
+              onClick={() => {
+                form.handleSubmit()
+              }}
+            />
           </form.AppForm>
         </form>
       </div>
