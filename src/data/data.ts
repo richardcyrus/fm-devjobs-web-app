@@ -1,8 +1,13 @@
 import * as fs from 'node:fs/promises'
+import { notFound } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
 import { searchFormSchema } from '@/lib/formOptions.ts'
 
 const JOBS_FILE = './data.json'
+
+type FilterParams = {
+  pageParam: number
+}
 
 async function readJobs() {
   return JSON.parse(
@@ -549,6 +554,25 @@ async function readJobs() {
 export const getJobs = createServerFn({ method: 'GET' }).handler(
   async () => await readJobs(),
 )
+
+export const getPagedJobs = createServerFn({ method: 'GET' })
+  .inputValidator((data: FilterParams) => data)
+  .handler(async ({ data }) => {
+    // console.log('data', data)
+
+    const jobList = await readJobs()
+    const records = Object.values(jobList)
+    // console.log('records length', records.length)
+    const startIndex = (data.pageParam - 1) * 12
+    // console.log('startIndex', startIndex)
+    const endIndex = Math.min(startIndex + 12, records.length)
+    // console.log('endIndex', endIndex)
+
+    const jobs = records.slice(startIndex, endIndex)
+    // console.log('jobs', jobs)
+
+    return jobs
+  })
 
 export const getJobById = createServerFn({ method: 'GET' })
   .inputValidator((data: { jobId: number }) => data)
