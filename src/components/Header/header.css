@@ -16,7 +16,7 @@ header {
     height: 160.54px;
   }
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     --active-inner: hsl(var(--color-primary-violet));
     --active: white;
     --background-default: white;
@@ -42,7 +42,7 @@ header {
     vertical-align: top;
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       left: 0;
       position: absolute;

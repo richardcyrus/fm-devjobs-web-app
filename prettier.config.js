@@ -4,7 +4,11 @@
 const config = {
   semi: false,
   singleQuote: true,
+  quoteProps: "as-needed",
+  jsxSingleQuote: false,
+  tabWidth: 2,
   trailingComma: "all",
+  arrowParens: "always",
   plugins: ["prettier-plugin-tailwindcss"],
   tailwindStylesheet: "./src/styles.css",
   tailwindFunctions: ["cva"],
