@@ -561,40 +561,69 @@ export const getJobs = createServerFn({ method: 'GET' }).handler(
 export const getPagedJobs = createServerFn({ method: 'GET' })
   .inputValidator((data: FilterParams) => data)
   .handler(async ({ data }) => {
-    console.log('serverFn_data', data)
     const { pageParam, limit, position, location, contract } = data
     const startIndex = (pageParam - 1) * limit
-    // console.log('startIndex', startIndex)
 
     const jobList = await readJobs()
     const records = Object.values(jobList)
-    // console.log('records length', records.length)
 
     /**
      * If no filters are provided, return paged results
      */
     if (!position && !location && !contract) {
       const endIndex = Math.min(startIndex + limit, records.length)
-      // console.log('endIndex', endIndex)
       const jobs = records.slice(startIndex, endIndex)
-      // console.log('jobs', jobs)
       const hasNextPage = endIndex < records.length
       const nextCursor = hasNextPage ? pageParam + 1 : null
 
       return { jobs, nextCursor }
+    } else {
+      if (position && !location && !contract) {
+        const jobs = records.filter((job) =>
+          job.position.toLowerCase().includes(position.toLowerCase()),
+        )
+        return { jobs, nextCursor: null }
+      } else if (location && !position && !contract) {
+        const jobs = records.filter((job) =>
+          job.location.toLowerCase().includes(location.toLowerCase()),
+        )
+        return { jobs, nextCursor: null }
+      } else if (contract && !position && !location) {
+        const jobs = records.filter((job) =>
+          job.contract.toLowerCase().includes(contract.toLowerCase()),
+        )
+        return { jobs, nextCursor: null }
+      } else if (position && location && !contract) {
+        const jobs = records.filter(
+          (job) =>
+            job.position.toLowerCase().includes(position.toLowerCase()) &&
+            job.location.toLowerCase().includes(location.toLowerCase()),
+        )
+        return { jobs, nextCursor: null }
+      } else if (position && contract && !location) {
+        const jobs = records.filter(
+          (job) =>
+            job.position.toLowerCase().includes(position.toLowerCase()) &&
+            job.contract.toLowerCase().includes(contract.toLowerCase()),
+        )
+        return { jobs, nextCursor: null }
+      } else if (location && contract && !position) {
+        const jobs = records.filter(
+          (job) =>
+            job.location.toLowerCase().includes(location.toLowerCase()) &&
+            job.contract.toLowerCase().includes(contract.toLowerCase()),
+        )
+        return { jobs, nextCursor: null }
+      } else if (position && location && contract) {
+        const jobs = records.filter(
+          (job) =>
+            job.position.toLowerCase().includes(position.toLowerCase()) &&
+            job.location.toLowerCase().includes(location.toLowerCase()) &&
+            job.contract.toLowerCase().includes(contract.toLowerCase()),
+        )
+        return { jobs, nextCursor: null }
+      }
     }
-    // TODO: evaluate the filters and return the filtered results when applicable
-    // else {
-    //   if( position && !location && !contract ) {}
-    //   else if ( location && !position && !contract ) {}
-    //   else if ( contract && !position && !location ) {}
-    //   else if ( position && location && !contract ) {}
-    //   else if ( position && contract && !location ) {}
-    //   else if ( location && contract && !position ) {}
-    //   else if ( position && location && contract ) {}
-    // }
-
-    // return jobs
   })
 
 export const getJobById = createServerFn({ method: 'GET' })

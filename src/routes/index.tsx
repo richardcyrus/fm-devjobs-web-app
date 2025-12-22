@@ -17,7 +17,7 @@ function Home() {
   const [isFilterModalOpen, setIsFilterModalOpen] = React.useState(false)
   const [filters, setFilters] = React.useState({ limit: 12 })
   const windowSize = useWindowSize()
-  // console.log('filters:', filters)
+
   const {
     data,
     error,
@@ -27,7 +27,6 @@ function Home() {
     isFetchingNextPage,
     status,
   } = useInfiniteJobs(filters)
-  // console.log('data', data?.pages)
 
   const handleFilterClick = () => {
     setIsFilterModalOpen(!isFilterModalOpen)
@@ -39,10 +38,9 @@ function Home() {
       onChange: searchFormSchema,
     },
     onSubmit: ({ formApi, value }) => {
-      // console.log('value: ', value)
-      setIsFilterModalOpen(false)
       const result = searchFormSchema.parse(value)
-      // console.log('result: ', result)
+
+      setIsFilterModalOpen(false)
       setFilters({ ...filters, ...result })
 
       formApi.reset()
