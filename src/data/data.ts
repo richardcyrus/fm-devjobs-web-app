@@ -5,7 +5,11 @@ import { createServerFn } from '@tanstack/react-start'
 const JOBS_FILE = './data.json'
 
 type FilterParams = {
+  limit: number
   pageParam: number
+  position?: string
+  location?: string
+  contract?: string
 }
 
 async function readJobs() {
@@ -557,20 +561,40 @@ export const getJobs = createServerFn({ method: 'GET' }).handler(
 export const getPagedJobs = createServerFn({ method: 'GET' })
   .inputValidator((data: FilterParams) => data)
   .handler(async ({ data }) => {
-    // console.log('data', data)
+    console.log('serverFn_data', data)
+    const { pageParam, limit, position, location, contract } = data
+    const startIndex = (pageParam - 1) * limit
+    // console.log('startIndex', startIndex)
 
     const jobList = await readJobs()
     const records = Object.values(jobList)
     // console.log('records length', records.length)
-    const startIndex = (data.pageParam - 1) * 12
-    // console.log('startIndex', startIndex)
-    const endIndex = Math.min(startIndex + 12, records.length)
-    // console.log('endIndex', endIndex)
 
-    const jobs = records.slice(startIndex, endIndex)
-    // console.log('jobs', jobs)
+    /**
+     * If no filters are provided, return paged results
+     */
+    if (!position && !location && !contract) {
+      const endIndex = Math.min(startIndex + limit, records.length)
+      // console.log('endIndex', endIndex)
+      const jobs = records.slice(startIndex, endIndex)
+      // console.log('jobs', jobs)
+      const hasNextPage = endIndex < records.length
+      const nextCursor = hasNextPage ? pageParam + 1 : null
 
-    return jobs
+      return { jobs, nextCursor }
+    }
+    // TODO: evaluate the filters and return the filtered results when applicable
+    // else {
+    //   if( position && !location && !contract ) {}
+    //   else if ( location && !position && !contract ) {}
+    //   else if ( contract && !position && !location ) {}
+    //   else if ( position && location && !contract ) {}
+    //   else if ( position && contract && !location ) {}
+    //   else if ( location && contract && !position ) {}
+    //   else if ( position && location && contract ) {}
+    // }
+
+    // return jobs
   })
 
 export const getJobById = createServerFn({ method: 'GET' })

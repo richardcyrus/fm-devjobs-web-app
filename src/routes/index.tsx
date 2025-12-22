@@ -1,26 +1,21 @@
 import { createFileRoute } from '@tanstack/react-router'
-import React, { useState } from 'react'
+import * as React from 'react'
 import { Button } from '@/components/Button/Button'
 import { Card } from '@/components/Card/Card'
 import { MobileSearchBar } from '@/components/SearchBar/MobileSearchBar'
 import { SearchBar } from '@/components/SearchBar/SearchBar'
-import { getJobs } from '@/data/data'
 import { useAppForm } from '@/hooks/searchBarForm'
 import { useInfiniteJobs } from '@/hooks/useJobs'
 import useWindowSize from '@/hooks/useWindowSize'
 import { formOpts, searchFormSchema } from '@/lib/formOptions'
 
 export const Route = createFileRoute('/')({
-  loader: async () => ({
-    jobs: await getJobs(),
-  }),
   component: Home,
 })
 
 function Home() {
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
-  const [filters, _setFilters] = useState({ pageParam: 1 })
-  // const { jobs } = Route.useLoaderData()
+  const [isFilterModalOpen, setIsFilterModalOpen] = React.useState(false)
+  const [filters, setFilters] = React.useState({ limit: 12 })
   const windowSize = useWindowSize()
   // console.log('filters:', filters)
   const {
@@ -32,7 +27,7 @@ function Home() {
     isFetchingNextPage,
     status,
   } = useInfiniteJobs(filters)
-  // console.log('data', data)
+  // console.log('data', data?.pages)
 
   const handleFilterClick = () => {
     setIsFilterModalOpen(!isFilterModalOpen)
@@ -43,13 +38,14 @@ function Home() {
     validators: {
       onChange: searchFormSchema,
     },
-    onSubmit: (params) => {
-      // console.log('params: ', params)
-      // console.log('value: ', params.value)
+    onSubmit: ({ formApi, value }) => {
+      // console.log('value: ', value)
       setIsFilterModalOpen(false)
-      const result = searchFormSchema.parse(params.value)
-      console.log('result: ', result)
-      // TODO: get filtered jobs from server.
+      const result = searchFormSchema.parse(value)
+      // console.log('result: ', result)
+      setFilters({ ...filters, ...result })
+
+      formApi.reset()
     },
   })
 
@@ -77,10 +73,10 @@ function Home() {
       ) : (
         <>
           <div className="job-cards mx-auto flex max-w-[327px] flex-col md:max-w-[689px] md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-x-[.6875em] lg:max-w-[1110px] lg:gap-x-[1.875em]">
-            {data.pages.map((group, i) => (
+            {data.pages.map((pages, i) => (
               // biome-ignore-start lint/suspicious: is safe
               <React.Fragment key={i}>
-                {group.map((job) => (
+                {pages.jobs.map((job) => (
                   <Card key={job.id} job={job} />
                 ))}
               </React.Fragment>
