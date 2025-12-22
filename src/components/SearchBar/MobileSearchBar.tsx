@@ -1,6 +1,5 @@
 import { Button } from '@/components/Button/Button'
 import { MobileSearchModal } from '@/components/SearchBar/MobileSearchModal'
-import { searchJobs } from '@/data/data'
 import { withForm } from '@/hooks/searchBarForm'
 
 export const MobileSearchBar = withForm({
@@ -14,9 +13,6 @@ export const MobileSearchBar = withForm({
         <div className="mt-[-40px] h-20 w-[327px] rounded-md bg-white ps-6 pe-4 dark:bg-blue-800">
           <form
             id="mobile-search"
-            action={searchJobs.url}
-            method="post"
-            encType={'multipart/form-data'}
             onSubmit={(e) => {
               e.preventDefault()
               e.stopPropagation()

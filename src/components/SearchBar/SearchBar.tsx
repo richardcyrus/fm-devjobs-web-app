@@ -1,21 +1,13 @@
-import { searchJobs } from '@/data/data'
 import { withForm } from '@/hooks/searchBarForm'
+import { defaultValues } from '@/lib/formOptions'
 import './searchbar.css'
 
 export const SearchBar = withForm({
-  defaultValues: {
-    position: '',
-    location: '',
-    contract: false,
-  },
-
+  defaultValues,
   render: function Render({ form }) {
     return (
       <div className="mt-[-40px] h-20 w-[327px] rounded-md bg-white md:w-[689px] lg:w-[1110px] dark:bg-blue-800">
         <form
-          action={searchJobs.url}
-          method="post"
-          encType={'multipart/form-data'}
           onSubmit={(e) => {
             e.preventDefault()
             e.stopPropagation()
