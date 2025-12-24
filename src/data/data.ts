@@ -1,16 +1,9 @@
 import * as fs from 'node:fs/promises'
 import { notFound } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
+import type { FilterParams, Job } from '@/types'
 
 const JOBS_FILE = './data.json'
-
-type FilterParams = {
-  limit: number
-  pageParam: number
-  position?: string
-  location?: string
-  contract?: string
-}
 
 async function readJobs() {
   return JSON.parse(
@@ -564,7 +557,7 @@ export const getPagedJobs = createServerFn({ method: 'GET' })
     const { pageParam, limit, position, location, contract } = data
     const startIndex = (pageParam - 1) * limit
 
-    const jobList = await readJobs()
+    const jobList: Job[] = await readJobs()
     const records = Object.values(jobList)
 
     /**
@@ -630,7 +623,7 @@ export const getJobById = createServerFn({ method: 'GET' })
   .inputValidator((data: { jobId: number }) => data)
   .handler(async ({ data }) => {
     const id = data.jobId
-    const jobs = await readJobs()
+    const jobs: Job[] = await readJobs()
     const job = jobs.find((job) => job.id === Number(id))
 
     if (!job) {

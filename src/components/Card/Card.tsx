@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { Link } from '@tanstack/react-router'
 
-export function Card({ job }) {
+import { Link } from '@tanstack/react-router'
+import type { Job } from '@/types'
+
+export function Card({ job }: { job: Job }) {
   return (
     <div className="card relative mx-auto mt-[3.0625em] mb-0 w-[327px] rounded-md bg-white px-[2em] pt-[3.0625em] pb-[2em] md:mx-0 md:mt-[4.0625em] md:w-[339px] lg:w-[350px] dark:bg-blue-800">
       <div

@@ -75,7 +75,7 @@ function Home() {
             {data.pages.map((pages, i) => (
               // biome-ignore-start lint/suspicious: is safe
               <React.Fragment key={i}>
-                {pages.jobs.map((job) => (
+                {pages?.jobs.map((job) => (
                   <Card key={job.id} job={job} />
                 ))}
               </React.Fragment>

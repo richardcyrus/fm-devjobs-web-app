@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/Button/Button'
 
+// biome-ignore lint/suspicious/noExplicitAny: expected
 export function NotFound({ children }: { children?: any }) {
   return (
     <div className="space-y-2 p-2">
