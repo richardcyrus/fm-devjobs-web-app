@@ -6,10 +6,7 @@ export function Header() {
   const [darkMode, setDarkMode] = useState(false)
 
   useLayoutEffect(() => {
-    if (
-      !('darkMode' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       window.localStorage.setItem('darkMode', JSON.stringify('true'))
       setDarkMode(true)
     } else if (
