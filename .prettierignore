@@ -8,3 +8,7 @@ dist
 .vscode
 node_modules/
 **/*.ts
+**/build
+**/public
+pnpm-lock.yaml
+routeTree.gen.ts

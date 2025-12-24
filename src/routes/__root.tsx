@@ -7,7 +7,9 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import { DefaultCatchBoundary } from '@/components/DefaultCatchBoundary/DefaultCatchBoundary'
 import { Header } from '@/components/Header/Header'
+import { NotFound } from '@/components/NotFound/NotFound'
 import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools'
 import appCss from '../styles.css?url'
 
@@ -51,7 +53,8 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
-
+  errorComponent: DefaultCatchBoundary,
+  notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
 })
 
