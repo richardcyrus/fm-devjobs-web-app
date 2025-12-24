@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import * as React from 'react'
 import { Button } from '@/components/Button/Button'
 import { Card } from '@/components/Card/Card'
+import { Loading } from '@/components/Loading/Loading'
 import { MobileSearchBar } from '@/components/SearchBar/MobileSearchBar'
 import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { useAppForm } from '@/hooks/searchBarForm'
@@ -65,7 +66,7 @@ function Home() {
         )
       }
       {status === 'pending' ? (
-        <div>Loading...</div>
+        <Loading />
       ) : status === 'error' ? (
         <p>{error.message}</p>
       ) : (
